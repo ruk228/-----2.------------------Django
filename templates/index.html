@@ -11,10 +11,6 @@
 
 </head>
 <body> 
-{% for index in most_popular_posts %}
-		{{ index.title }} <br>
-{% endfor %}
-
   <!--================Header Menu Area =================-->
   <header class="header_area">
     <div class="main_menu">
@@ -103,7 +99,25 @@
                 <a class="button" href="#">Read More <i class="ti-arrow-right"></i></a>
               </div>
             </div>
+{% for index in fresh_posts %}
+              <div class="details mt-20">
+                <h3>{{ index.title }}</h3>
+                <p>{{ index.text }}</p>
+                <a class="button" href="#">Read More <i class="ti-arrow-right"></i></a>
+              </div>
+            </div>
 
+            <div class="single-recent-blog-post">
+              <div class="thumb">
+                <img class="img-fluid" src="{{index.image_url}}" alt="">
+                <ul class="thumb-info">
+                  <li><a href="#"><i class="ti-user"></i>{{index.author}}</a></li>
+                  <li><a href="#"><i class="ti-notepad"></i>{{ index.published_at }}</a></li>
+                  <li><a href="#"><i class="ti-themify-favicon"></i>{{ index.comments_amount}}</a></li>
+                </ul>
+              </div>
+
+{% endfor %}
             <div class="single-recent-blog-post">
               <div class="thumb">
                 <img class="img-fluid" src="{%static 'img/blog/blog2.png'%}" alt="">
