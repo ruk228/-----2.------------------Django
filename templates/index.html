@@ -1,8 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-
-  <!--================Header Menu Area =================-->
+<!--================Header Menu Area =================-->
 <title>Sensive Blog - Home</title>
   <main class="site-main">
     <!--================Hero Banner start =================-->  
@@ -26,8 +25,8 @@
   		 {% for post in most_popular_posts %}
   		  <div class="flex-fill" style="margin-right: 30px;">
             <div class="card blog__slide text-center">
-              <div class="blog__slide__img">
-                <img class="card-img rounded-0" src="{{post.image_url}}" alt="">
+              <div class="blog__slide__img">            
+                <img class="card-img rounded-0" src="static/img{{post.image_url}}" alt="{{post.title}}">
                 	</div>
                   <div class="card blog__slide text-center">
                     <h3><a href="{% url 'post_detail' slug=post.slug %}">{{post.title}}</a></h3>
@@ -46,10 +45,14 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8">
-			{% for index in fresh_posts %}            
-            <div class="single-recent-blog-post">
-              <div class="thumb">
-                <img class="img-fluid" src="{{index.image_url}}" alt="">
+			      {% for index in fresh_posts %}            
+              <div class="single-recent-blog-post">
+                <div class="thumb">
+              {% if index.image_url%}
+                <img class="img-fluid" src="/static/img{{index.image_url}}" alt="{{ index.title }}">
+              {%else%}
+                <img class="card-img rounded-0" src="{%static 'img\banner\blog.png' %}">     
+              {% endif %} 
                 <ul style="max-width: 550px;" class="thumb-info">
                   <li><a href="#"><i class="ti-user"></i>{{index.author}}</a></li>
                   <li><a href="#"><i class="ti-notepad"></i>{{ index.published_at }}</a></li>
@@ -65,7 +68,7 @@
               {% endfor %}
             <div class="single-recent-blog-post">
               <div class="thumb">
-                <img class="img-fluid" src="{%static 'img/blog/blog1.png'%}" alt="">
+                <img class="img-fluid" src="{%static 'img/blog/blog1.png'%}" alt="Woman claims husband wants to name baby girl after his ex-lover sparking">
                 <ul style="max-width: 550px;" class="thumb-info">
                   <li><a href="#"><i class="ti-user"></i>Admin</a></li>
                   <li><a href="#"><i class="ti-notepad"></i>January 12,2019</a></li>
@@ -80,7 +83,7 @@
             </div>
             <div class="single-recent-blog-post">
               <div class="thumb">
-                <img class="img-fluid" src="{%static 'img/blog/blog2.png'%}" alt="">
+                <img class="img-fluid" src="{%static 'img/blog/blog2.png'%}" alt="Woman claims husband wants to name baby girl after his ex-lover sparking.">
                 <ul style="max-width: 550px;" class="thumb-info">
                   <li><a href="#"><i class="ti-user"></i>Admin</a></li>
                   <li><a href="#"><i class="ti-notepad"></i>January 12,2019</a></li>
@@ -96,7 +99,7 @@
 
             <div class="single-recent-blog-post">
               <div class="thumb">
-                <img class="img-fluid" src="{%static 'img/blog/blog3.png'%}" alt="">
+                <img class="img-fluid" src="{%static 'img/blog/blog3.png'%}" alt="Tourist deaths in Costa Rica jeopardize safe destination reputation all time.">
                 <ul style="max-width: 550px;" class="thumb-info">
                   <li><a href="#"><i class="ti-user"></i>Admin</a></li>
                   <li><a href="#"><i class="ti-notepad"></i>January 12,2019</a></li>
@@ -112,7 +115,7 @@
 
             <div class="single-recent-blog-post">
               <div class="thumb">
-                <img class="img-fluid" src="{% static 'img/blog/blog4.png'%}" alt="">
+                <img class="img-fluid" src="{% static 'img/blog/blog4.png'%}" alt="Tourist deaths in Costa Rica jeopardize safe destination reputation all time.">
                 <ul style="max-width: 550px;" class="thumb-info">
                   <li><a href="#"><i class="ti-user"></i>Admin</a></li>
                   <li><a href="#"><i class="ti-notepad"></i>January 12,2019</a></li>
